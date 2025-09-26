@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: "Roboto", sans-serif;
+  --color-backwhite: hsl(0,0%,98%);
+  --color-main: hsl(210,92%,28%);
+  --color-secundary: hsl(205,42%,45%);
+  --color-focus: hsl(212,60%,95%);
+  --color-stroke: hsl(210,23%,73%);
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+[x-cloak] { display: none !important; }

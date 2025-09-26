@@ -1,0 +1,51 @@
+---
+import logo from '../assets/logo_brasil_serv.svg'
+import NavDropDownMobile from './NavDropDownMobile.astro'
+---
+<header 
+    id="inicio"
+    class=" flex flex-col w-full justify-center items-center bg-secundary py-4"
+    x-data
+    x-init="$store.display.setDisplay()"
+    @resize.window.debounce="$store.display.setDisplay()"
+>
+    <section class=" flex justify-between max-w-[1280px] w-full h-9 px-5">
+        <div class=" flex items-center gap-6 md:w-full md:justify-between lg:w-fit lg:justify-center">
+            <img class=" w-[119px] h-[36px]" src={logo.src} alt="brasilserv logo">
+            <template x-data x-if="$store.display.screen=='desktop'||$store.display.screen=='tablet'">
+                <nav class="text-base font-roboto text-backwhite sm:text-lg">
+                    <ul class="flex gap-8 ">
+                        <li>
+                            <a href="#inicio">Início</a>
+                        </li>
+                        <li>
+                            <a href="#beneficios">Benefícios</a>
+                        </li>
+                        <li>
+                            <a href="#serviços">Serviços</a>
+                        </li>
+                        <li>
+                            <a href="#sobre">Sobre nós</a>
+                        </li>
+                        <li>
+                            <a href="#contato">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+            </template>
+        </div>
+        <template x-data x-if="$store.display.screen=='desktop'">
+            <a
+                x-on:mouseover="animate($el, { scale: 1.05 })" 
+                x-on:mouseleave="animate($el, { scale: 1 })"  
+                class=" py-2 px-5 flex justify-center items-center text-base font-roboto text-secundary bg-backwhite rounded-sm cursor-pointer sm:text-lg"
+                href={`https://wa.me/55${import.meta.env.WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer"
+            >
+                Entre em contato
+            </a>
+        </template>
+        <template x-data x-if="$store.display.screen=='mobile'||$store.display.screen=='phone'">
+            <NavDropDownMobile/>
+        </template>
+    </section>
+</header>

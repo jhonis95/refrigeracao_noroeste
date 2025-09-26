@@ -1,0 +1,80 @@
+---
+
+---
+<div x-data="{dropdownopen:false}" class="flex justify-center items-center w-[35px] h-[35px]"
+    x-on:click="
+        dropdownopen = !dropdownopen;
+        animate(
+          $el.querySelector('#menuicon'), 
+          { opacity: dropdownopen ? 0 : 1, rotate: dropdownopen ? 90 : 0 },
+          { duration: 0.3 }
+        ); 
+        animate(
+          $el.querySelector('#closeicon'), 
+          { opacity: dropdownopen ? 1 : 0, rotate: dropdownopen ? 0 : -90 },
+          { duration: 0.3 }
+        );
+    "
+>
+    <svg 
+      id="menuicon"
+      x-show="!dropdownopen"
+      xmlns="http://www.w3.org/2000/svg" 
+      width="32" 
+      height="32" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      class="lucide lucide-menu-icon lucide-menu stroke-backwhite absolute"
+    >
+      <path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>
+    </svg>
+
+    <svg 
+      id="closeicon"
+      x-show="dropdownopen"
+      xmlns="http://www.w3.org/2000/svg" 
+      width="32" 
+      height="32" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      class="lucide lucide-x-icon lucide-x stroke-backwhite absolute"
+    >
+      <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+    </svg>
+    <template x-teleport="header">
+        <nav x-show="dropdownopen" class="text-base font-roboto text-backwhite z-10 pt-5 sm:text-lg"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90"
+        >
+            <ul class="flex flex-col gap-4 bg-secundary text-center">
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#beneficios">Benefícios</a>
+                </li>
+                <li>
+                    <a href="#serviços">Serviços</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre nós</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+    </template>
+</div>
